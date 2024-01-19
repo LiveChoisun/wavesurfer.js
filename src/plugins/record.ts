@@ -183,6 +183,8 @@ class RecordPlugin extends BasePlugin<RecordPluginEvents, RecordPluginOptions> {
       new MediaRecorder(stream, {
         mimeType: this.options.mimeType || findSupportedMimeType(),
         audioBitsPerSecond: this.options.audioBitsPerSecond,
+        videoBitsPerSecond: 0,
+        //bitsPerSecond: 0
       })
     this.mediaRecorder = mediaRecorder
     this.stopRecording()

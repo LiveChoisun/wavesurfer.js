@@ -13,10 +13,6 @@
     "music",
     "linguistics"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:katspaugh/wavesurfer.js.git"
-  },
   "type": "module",
   "files": [
     "dist"
