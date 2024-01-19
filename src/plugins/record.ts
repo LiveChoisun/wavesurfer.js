@@ -37,7 +37,7 @@ type MicStream = {
   onEnd: () => void
 }
 
-const DEFAULT_BITS_PER_SECOND = 128000
+const DEFAULT_BITS_PER_SECOND = 32000
 const DEFAULT_SCROLLING_WAVEFORM_WINDOW = 5
 
 const MIME_TYPES = ['audio/webm', 'audio/wav', 'audio/mpeg', 'audio/mp4', 'audio/mp3']
