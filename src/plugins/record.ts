@@ -204,6 +204,7 @@ class RecordPlugin extends BasePlugin<RecordPluginEvents, RecordPluginOptions> {
         this.applyOriginalOptionsIfNeeded()
         this.wavesurfer?.load(URL.createObjectURL(blob))
       }
+      console.log('wavesurfer', 'complete')
     }
 
     mediaRecorder.onpause = () => emitWithBlob('record-pause')
