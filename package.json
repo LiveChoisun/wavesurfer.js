@@ -69,5 +69,8 @@
     "rollup": "^3.26.2",
     "rollup-plugin-dts": "^6.1.0",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "fix-webm-metainfo": "^1.0.8"
   }
 }

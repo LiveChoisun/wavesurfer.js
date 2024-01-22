@@ -4,6 +4,9 @@
 
 import BasePlugin, { type BasePluginEvents } from '../base-plugin.js'
 import Timer from '../timer.js'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+import fixWebmMetaInfo from 'fix-webm-metainfo/dist/index'
 
 export type RecordPluginOptions = {
   /** The MIME type to use when recording audio */
@@ -197,8 +200,14 @@ class RecordPlugin extends BasePlugin<RecordPluginEvents, RecordPluginOptions> {
       }
     }
 
-    const emitWithBlob = (ev: 'record-pause' | 'record-end') => {
-      const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType })
+    const emitWithBlob = async (ev: 'record-pause' | 'record-end') => {
+      let blob: Blob
+      if (this.mediaRecorder?.mimeType === 'audio/webm;codecs=opus') {
+        blob = await fixWebmMetaInfo(new Blob([...recordedChunks], { type: 'audio/webm;codecs=opus' }))
+      } else {
+        blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType })
+      }
+
       this.emit(ev, blob)
       if (this.options.renderRecordedAudio) {
         this.applyOriginalOptionsIfNeeded()
